@@ -1,5 +1,6 @@
 import ChardCard from "./ChardCard";
 import "./CharactersList.css";
+import { Typography } from "@mui/material";
 
 type CharactersListProps = {
   title: string;
@@ -18,7 +19,7 @@ const CharactersList = ({
 }: CharactersListProps) => {
   return (
     <div>
-      <h2>{title}</h2>
+      <Typography variant="h5">{title}</Typography>
       <div className="chars_list">
         {charsToShow.map((char) => (
           <ChardCard

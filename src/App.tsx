@@ -15,6 +15,7 @@ function App() {
   const [filterCharacters, setFilterCharacters] = useState<Filter | undefined>(
     undefined
   );
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [characters, setCharacters] = useState<any[]>([]);
   const [favCharacters, setFavCharacters] = useState<string[]>([]);
   const [characterSelected, setCharacterSelected] = useState<
@@ -22,9 +23,13 @@ function App() {
   >(undefined);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch(URL)
       .then((response) => response.json())
-      .then((data) => setCharacters(data));
+      .then((data) => {
+        setIsLoading(false);
+        setCharacters(data);
+      });
   }, []);
 
   const getFilteredCharacters = () => {
@@ -55,8 +60,10 @@ function App() {
   return (
     <>
       <NavBar onChangeFilter={(newFilter) => setFilterCharacters(newFilter)} />
-      {!characters.length ? (
-        <div>Loading...</div>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : !characters.length ? (
+        <div>Woops... no info</div>
       ) : characterSelected ? (
         <Character info={characters.find((c) => c.id === characterSelected)} />
       ) : (
