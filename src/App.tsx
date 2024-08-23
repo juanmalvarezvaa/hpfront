@@ -43,6 +43,15 @@ function App() {
       : "Hogwarts staff";
   };
 
+  const handleAddToFavs = (charId: string) => {
+    console.log("handleAddToFavs: ", charId);
+    if (favCharacters.includes(charId)) {
+      setFavCharacters(favCharacters.filter((c) => c !== charId));
+    } else {
+      setFavCharacters([...favCharacters, charId]);
+    }
+  };
+
   return (
     <>
       <NavBar onChangeFilter={(newFilter) => setFilterCharacters(newFilter)} />
@@ -59,13 +68,16 @@ function App() {
                 favCharacters.includes(c.id)
               )}
               onCharacterClick={(char: string) => setCharacterSelected(char)}
+              onFavClick={handleAddToFavs}
             />
           )}
 
           <CharactersList
             title={getTitle()}
             charsToShow={getFilteredCharacters()}
+            favList={favCharacters}
             onCharacterClick={(char: string) => setCharacterSelected(char)}
+            onFavClick={handleAddToFavs}
           />
         </>
       )}

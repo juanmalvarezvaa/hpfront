@@ -1,0 +1,45 @@
+.char_card {
+  width: 200px;
+  height: 270px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  background-color: rgb(77, 77, 77);
+  position: relative;
+
+  .chard_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-bottom: 2px solid rgba(255, 255, 255, 0.4); */
+  }
+
+  .card_info {
+    position: absolute;
+    top: 220px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-top: 2px solid rgba(255, 255, 255, 0.4);
+    width: 100%;
+    height: 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .MuiTypography-body2 {
+      margin-left: 10px;
+      font-size: 18px;
+    }
+
+    .MuiIconButton-root {
+      /* margin-right: 10px; */
+      color: white;
+
+      &:hover {
+        color: yellow;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

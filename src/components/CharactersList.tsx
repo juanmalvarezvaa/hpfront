@@ -1,22 +1,35 @@
+import ChardCard from "./ChardCard";
+import "./CharactersList.css";
+
 type CharactersListProps = {
   title: string;
   charsToShow: any[];
+  favList?: string[];
   onCharacterClick: (char: string) => void;
+  onFavClick: (charId: string) => void;
 };
 
 const CharactersList = ({
   title,
   charsToShow,
+  favList,
   onCharacterClick,
+  onFavClick,
 }: CharactersListProps) => {
   return (
     <div>
       <h2>{title}</h2>
-      <ul>
+      <div className="chars_list">
         {charsToShow.map((char) => (
-          <li key={char.id}>{char.name}</li>
+          <ChardCard
+            key={char.id}
+            character={char}
+            isFav={!favList ? true : favList.some((c) => c === char.id)}
+            onFav={(charId) => onFavClick(charId)}
+            // onCharClick={onCharacterClick}
+          />
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
