@@ -16,7 +16,7 @@ function App() {
     undefined
   );
   const [characters, setCharacters] = useState<any[]>([]);
-  const [favCharacters, setFavCharacters] = useState([]);
+  const [favCharacters, setFavCharacters] = useState<string[]>([]);
   const [characterSelected, setCharacterSelected] = useState<
     string | undefined
   >(undefined);
@@ -51,11 +51,23 @@ function App() {
       ) : characterSelected ? (
         <Character info={characters.find((c) => c.id === characterSelected)} />
       ) : (
-        <CharactersList
-          title={getTitle()}
-          charsToShow={getFilteredCharacters()}
-          onCharacterClick={(char: string) => setCharacterSelected(char)}
-        />
+        <>
+          {!!favCharacters.length && (
+            <CharactersList
+              title="Favourite characters"
+              charsToShow={characters.filter((c) =>
+                favCharacters.includes(c.id)
+              )}
+              onCharacterClick={(char: string) => setCharacterSelected(char)}
+            />
+          )}
+
+          <CharactersList
+            title={getTitle()}
+            charsToShow={getFilteredCharacters()}
+            onCharacterClick={(char: string) => setCharacterSelected(char)}
+          />
+        </>
       )}
     </>
   );
