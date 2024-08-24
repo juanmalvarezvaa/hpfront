@@ -1,16 +1,23 @@
-.character_desc {
+.character_info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 16px;
 
-  .char_info {
+  .character_desc {
     display: flex;
+    flex-direction: column;
     gap: 4px;
-    align-items: baseline;
-    
 
-    /* .MuiTypography-body1 {
-      font-weight: bold;
-    } */
+    .char_info {
+      display: flex;
+      gap: 4px;
+      align-items: baseline;
+    }
+
+    .character_img {
+      img {
+        border: 1px solid #000;
+      }
+    }
   }
 }
