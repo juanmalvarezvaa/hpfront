@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import NavBar from "./components/NavBar";
 import Character from "./components/Character";
 import CharactersList from "./components/CharactersList";
-import { IconButton } from "@mui/material";
+import { IconButton, Button } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 import "./App.css";
 
 export enum Filter {
@@ -31,6 +32,7 @@ function App() {
     undefined
   );
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [amountToShow, setAmountToShow] = useState<number>(18);
   const [characters, setCharacters] = useState<any[]>([]);
   const [houseSelected, setHouseSelected] = useState<Houses | undefined>();
   const [favCharacters, setFavCharacters] = useState<string[]>([]);
@@ -127,11 +129,20 @@ function App() {
 
           <CharactersList
             title={getTitle()}
-            charsToShow={getFilteredCharacters()}
+            charsToShow={getFilteredCharacters().slice(0, amountToShow)}
             favList={favCharacters}
             onCharacterClick={(char: string) => setCharacterSelected(char)}
             onFavClick={handleAddToFavs}
           />
+
+          {amountToShow < characters.length && (
+            <Button
+              startIcon={<ExpandMore />}
+              onClick={() => setAmountToShow((prevAmount) => prevAmount + 18)}
+            >
+              Load more
+            </Button>
+          )}
         </>
       )}
     </>
