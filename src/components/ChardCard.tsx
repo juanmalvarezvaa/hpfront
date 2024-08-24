@@ -6,15 +6,15 @@ type ChardCardProps = {
   character: any;
   isFav: boolean;
   onFav: (charId: string) => void;
-  //   onCharClick: (charId: string) => void;
+  onCharClick: (charId: string) => void;
 };
 
 const ChardCard = ({
   character,
   isFav,
   onFav,
-}: //   onCharClick,
-ChardCardProps) => {
+  onCharClick,
+}: ChardCardProps) => {
   return (
     <div className="char_card">
       <img
@@ -25,6 +25,8 @@ ChardCardProps) => {
         alt={character.actor}
         className="chard_img"
         // onClick={onCharClick}
+
+        onClick={() => onCharClick(character.id)}
       />
       <div className="card_info">
         <Typography variant="body2" color="white" noWrap>

@@ -27,7 +27,7 @@ const CharactersList = ({
             character={char}
             isFav={!favList ? true : favList.some((c) => c === char.id)}
             onFav={(charId) => onFavClick(charId)}
-            // onCharClick={onCharacterClick}
+            onCharClick={onCharacterClick}
           />
         ))}
       </div>

@@ -65,7 +65,10 @@ function App() {
       ) : !characters.length ? (
         <div>Woops... no info</div>
       ) : characterSelected ? (
-        <Character info={characters.find((c) => c.id === characterSelected)} />
+        <Character
+          info={characters.find((c) => c.id === characterSelected)}
+          onBack={() => setCharacterSelected(undefined)}
+        />
       ) : (
         <>
           {!!favCharacters.length && (

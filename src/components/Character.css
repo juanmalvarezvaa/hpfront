@@ -1,0 +1,16 @@
+.character_desc {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .char_info {
+    display: flex;
+    gap: 4px;
+    align-items: baseline;
+    
+
+    /* .MuiTypography-body1 {
+      font-weight: bold;
+    } */
+  }
+}
