@@ -88,7 +88,10 @@ function App() {
     <>
       <div className="top_bar">
         <NavBar
-          onChangeFilter={(newFilter) => setFilterCharacters(newFilter)}
+          onChangeFilter={(newFilter) => {
+            setAmountToShow(18);
+            setFilterCharacters(newFilter);
+          }}
         />
         <div className="houses">
           <IconButton onClick={() => setHouseSelected(Houses.GRYFFINDOR)}>
